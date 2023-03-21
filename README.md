@@ -1,1 +1,2 @@
-# Randon-start-player-generator
+# Player picker
+App choses a random start player
