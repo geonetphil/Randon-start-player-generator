@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Card Game</title>
+  <title>Player picker</title>
   <script src="script.js" type="module"></script>
   <style>
     html, body {
@@ -12,13 +12,28 @@
       padding: 0;
       height: 100%;
       width: 100%;
+      touch-action: pan-x pan-y;
     }
     .circle {
       animation: grow .25s;
       background: red;
       position: absolute;
     }
-
+    .circle-0 {
+      background: green;
+    }
+    .circle-1 {
+      background: purple;
+    }
+    .circle-2 {
+      background: gray;
+    }
+    .circle-3 {
+      background: white;
+    }
+    .circle-4 {
+      background: black;
+    }
     @keyframes grow {
   from {
     transform: scale(0);
