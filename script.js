@@ -1,6 +1,16 @@
 
+const height = 100;
+const radius = height / 2;
+
 function toClassName(identifier) {
     return "circle-" + identifier;
+}
+
+function moveCircle(touch, circle) {
+    const top = touch.clientY - radius
+    const left = touch.clientX - radius
+    circle.style.top = top + "px"
+    circle.style.left = left + "px"
 }
 
 function displayCircles(touchStartEvent) {
@@ -14,18 +24,11 @@ function displayCircles(touchStartEvent) {
         circle.classList.add("circle")
         const className = toClassName(touch.identifier);
         circle.classList.add(className)
-        const height = 50;
-        const radius = height / 2;
+       
         circle.style.width = height + "px";
         circle.style.height = height + "px";
         circle.style.borderRadius = radius  + "px"
-    
-        const top = touch.clientY - radius
-        const left = touch.clientX - radius
-    
-    
-        circle.style.top = top + "px"
-        circle.style.left = left + "px"
+        moveCircle(touch, circle);
 
         document.body.appendChild(circle)
 
@@ -51,12 +54,24 @@ function removeCircles(touchRemoveEvent) {
     
 }
 
+document.body.addEventListener("touchmove", moveCircles);
+
+function moveCircles(touchMoveEvent) {
+    touchMoveEvent.preventDefault();
+    const touches = touchMoveEvent.changedTouches
+
+    for (const touch of touches) {
+        const className = toClassName(touch.identifier);
+        const existingMatchingCircles = document.body.querySelectorAll("." + className);
+        for (const circle of existingMatchingCircles) {
+            moveCircle(touch, circle);
+        }
+    }
+
+}
+
 document.body.addEventListener("touchend", removeCircles);
 document.body.addEventListener("touchcancel", removeCircles);
 
 
-function moveCircles(touchMoveEvent) {
-    touchMoveEvent.preventDefault();
-}
 
-document.body.addEventListener("touchmove", moveCircles);
