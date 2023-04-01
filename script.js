@@ -1,3 +1,4 @@
+const circleClassName = "circle"
 
 const height = 100;
 const radius = height / 2;
@@ -13,6 +14,32 @@ function moveCircle(touch, circle) {
     circle.style.left = left + "px"
 }
 
+function clearTimer(){
+if (timer) {
+    clearTimeout(timer)
+}
+    
+}
+
+function startTimer (){
+    const existingMatchingCircles = document.body.querySelectorAll("." + circleClassName);
+    if (existingMatchingCircles.length >1) {
+        timer = setTimeout(choosePlayer, 5000);   
+    }
+}
+
+
+function choosePlayer(){
+    const existingMatchingCircles =[... document.body.querySelectorAll("." + circleClassName)];
+    const randomIndex = Math.floor(Math.random() * existingMatchingCircles.length);
+    existingMatchingCircles.splice(randomIndex, 1);
+    for (const element of existingMatchingCircles) {
+        element.remove();
+    }
+}
+
+let timer
+
 function displayCircles(touchStartEvent) {
     touchStartEvent.preventDefault();
     console.log(touchStartEvent);
@@ -21,7 +48,7 @@ function displayCircles(touchStartEvent) {
     for (const touch of touches) {
         
         const circle = document.createElement("div")
-        circle.classList.add("circle")
+        circle.classList.add(circleClassName)
         const className = toClassName(touch.identifier);
         circle.classList.add(className)
        
@@ -33,7 +60,9 @@ function displayCircles(touchStartEvent) {
         document.body.appendChild(circle)
 
     }
-    
+    clearTimer()
+    startTimer()
+
 }
 
 document.body.addEventListener("touchstart", displayCircles);
@@ -51,6 +80,9 @@ function removeCircles(touchRemoveEvent) {
             element.remove();
         }
     }
+    clearTimer()
+    startTimer()
+
     
 }
 
@@ -69,6 +101,9 @@ function moveCircles(touchMoveEvent) {
     }
 
 }
+
+
+
 
 document.body.addEventListener("touchend", removeCircles);
 document.body.addEventListener("touchcancel", removeCircles);
