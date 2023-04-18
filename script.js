@@ -14,7 +14,8 @@ function moveCircle(touch, circle) {
     circle.style.left = left + "px"
 }
 
-function clearTimer(){
+function clearTimer() {
+    document.body.classList.remove("race");
 if (timer) {
     clearTimeout(timer)
 }
@@ -24,6 +25,7 @@ if (timer) {
 function startTimer (){
     const existingMatchingCircles = document.body.querySelectorAll("." + circleClassName);
     if (existingMatchingCircles.length >1) {
+        document.body.classList.add("race")
         timer = setTimeout(choosePlayer, 5000);   
     }
 }

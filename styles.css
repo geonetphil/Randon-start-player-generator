@@ -1,0 +1,50 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    touch-action: pan-x pan-y;
+    overscroll-behavior: none;
+  }
+
+
+  .circle {
+    animation: grow .25s;
+    position: absolute;
+    border: 5px solid blue;
+    box-sizing: border-box;
+  }
+
+  .race .circle {
+    border: 5px solid red;
+  }
+
+  .circle-0 {
+    border: 5px solid red;
+  }
+  .circle-1 {
+    background-color: orange;
+  }
+  .circle-2 {
+    background-color: yellow;
+  }
+  .circle-3 {
+    background-color: green;
+  }
+  .circle-4 {
+    background-color: blue;
+  }
+  .circle-5 {
+    background-color: indigo;
+  }
+  .circle-6 {
+    background-color: violet;
+  }
+  @keyframes grow {
+from {
+  transform: scale(0);
+}
+to {
+  transform: scale(1);
+}
+}
