@@ -37,6 +37,12 @@ html, body {
   .circle:nth-child(7) {
     border-color: violet;
   }
+  .circle:nth-child(8) {
+    border-color: grey;
+  }
+  .circle:nth-child(9) {
+    border-color: white;
+  }
   @keyframes grow {
 from {
   transform: scale(0);
