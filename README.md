@@ -1,6 +1,5 @@
 # Player picker
-App choses a random start player
-
+Selects a random person, inspired by Chwazi.
 
 ## Getting started
 
