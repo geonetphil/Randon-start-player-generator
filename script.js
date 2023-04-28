@@ -36,7 +36,7 @@ function choosePlayer(){
     const randomIndex = Math.floor(Math.random() * existingMatchingCircles.length);
     existingMatchingCircles.splice(randomIndex, 1);
     for (const element of existingMatchingCircles) {
-        element.remove();
+        element.style.visibility='hidden';
     }
 }
 
