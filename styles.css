@@ -15,30 +15,26 @@ html, body {
     box-sizing: border-box;
   }
 
-  .race .circle {
-    border: 5px solid red;
+  .circle:nth-child(1) {
+    border-color: red;
   }
-
-  .circle-0 {
-    border: 5px solid red;
+  .circle:nth-child(2) {
+    border-color: orange;
   }
-  .circle-1 {
-    background-color: orange;
+  .circle:nth-child(3) {
+    border-color: yellow;
   }
-  .circle-2 {
-    background-color: yellow;
+  .circle:nth-child(4) {
+    border-color: green;
   }
-  .circle-3 {
-    background-color: green;
+  .circle:nth-child(5) {
+    border-color: blue;
   }
-  .circle-4 {
-    background-color: blue;
+  .circle:nth-child(6) {
+    border-color: indigo;
   }
-  .circle-5 {
-    background-color: indigo;
-  }
-  .circle-6 {
-    background-color: violet;
+  .circle:nth-child(7) {
+    border-color: violet;
   }
   @keyframes grow {
 from {

@@ -44,16 +44,16 @@ let timer
 
 function displayCircles(touchStartEvent) {
     touchStartEvent.preventDefault();
-    console.log(touchStartEvent);
-    const touches = touchStartEvent.touches;
+    const touches = touchStartEvent.changedTouches;
+
+    
 
     for (const touch of touches) {
-        
+    
         const circle = document.createElement("div")
         circle.classList.add(circleClassName)
         const className = toClassName(touch.identifier);
         circle.classList.add(className)
-       
         circle.style.width = height + "px";
         circle.style.height = height + "px";
         circle.style.borderRadius = radius  + "px"
