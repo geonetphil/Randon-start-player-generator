@@ -5,13 +5,14 @@ html, body {
     width: 100%;
     touch-action: pan-x pan-y;
     overscroll-behavior: none;
+    background-color: black;
   }
 
 
   .circle {
     animation: grow .25s;
     position: absolute;
-    border: 5px solid blue;
+    border: 10px solid blue;
     box-sizing: border-box;
   }
 
