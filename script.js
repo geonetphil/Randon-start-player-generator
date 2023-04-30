@@ -7,7 +7,6 @@ function isTouchDevice() {
     }  
   }
   
-  console.log(is_touch_device());
 
 const circleClassName = "circle"
 
