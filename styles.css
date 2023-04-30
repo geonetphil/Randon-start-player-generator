@@ -8,7 +8,9 @@ html, body {
     background-color: black;
   }
 
-
+  .message {
+    color: white;
+  }
   .circle {
     animation: grow .25s;
     position: absolute;
