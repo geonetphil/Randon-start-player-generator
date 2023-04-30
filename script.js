@@ -1,3 +1,14 @@
+function isTouchDevice() {  
+    try {  
+      document.createEvent("TouchEvent");  
+      return true;  
+    } catch (e) {  
+      return false;  
+    }  
+  }
+  
+  console.log(is_touch_device());
+
 const circleClassName = "circle"
 
 const height = 100;
