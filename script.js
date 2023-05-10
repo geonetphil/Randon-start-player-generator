@@ -13,15 +13,18 @@
       } else {
         document.querySelector('.compat').style.display = 'block';
         document.querySelector('.welcome').style.display = 'none';
+      
+        var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 
-        var closeButton = document.createElement('button');
-        closeButton.textContent = 'Close Tab';
-        closeButton.addEventListener('click', function() {
-          window.close();
-        });
-        document.body.appendChild(closeButton);
-      }
-
+        if (!isChrome) {
+            var closeButton = document.createElement('button');
+            closeButton.textContent = 'Close Tab';
+            closeButton.addEventListener('click', function() {
+              window.close();
+            });
+            document.body.appendChild(closeButton);
+          }
+        }
 
 const circleClassName = "circle"
 
