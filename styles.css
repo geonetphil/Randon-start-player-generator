@@ -8,8 +8,18 @@ html, body {
     background-color: black;
   }
 
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    border: 1px solid #000;
+  }
   .message {
     color: white;
+    font-size: large;
+    text-align: center;
+    
   }
   .circle {
     animation: grow .25s;
