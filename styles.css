@@ -8,12 +8,30 @@ html, body {
     background-color: black;
   }
 
-
+  .messages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border: 1px solid #000;
+  }
+  .message {
+    display: none;
+    color: white;
+    font-size:xx-large;
+    text-align: center;
+    font-family: Jazz LET;
+    
+  }
   .circle {
     animation: grow .25s;
     position: absolute;
     border: 10px solid blue;
     box-sizing: border-box;
+  }
+
+  .rings {
+    position: absolute;
   }
 
   .circle:nth-child(1) {
