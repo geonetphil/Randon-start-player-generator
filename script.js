@@ -1,30 +1,18 @@
-    function isTouchDevice() {
-        return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
-      }
-      
-      function closeWelcomeMessage() {
-        document.querySelector('.welcome').style.display = 'none';
-      }
-      
-      if (isTouchDevice()) {
-        document.querySelector('.compat').style.display = 'none';
-        document.querySelector('.welcome').style.display = 'block';
-        document.addEventListener('touchstart', closeWelcomeMessage, { once: true });
-      } else {
-        document.querySelector('.compat').style.display = 'block';
-        document.querySelector('.welcome').style.display = 'none';
-      
-        var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+function isTouchDevice() {
+    return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+}
 
-        if (!isChrome) {
-            var closeButton = document.createElement('button');
-            closeButton.textContent = 'Close Tab';
-            closeButton.addEventListener('click', function() {
-              window.close();
-            });
-            document.body.appendChild(closeButton);
-          }
-        }
+
+const messagesSelector = ".messages"
+function hideMessages() {
+    const messages = document.querySelectorAll(messagesSelector);
+    messages.forEach(m => m.style.display = "none");
+}
+
+
+const messageClassToShow = isTouchDevice() ? "welcome" : "compat";
+document.querySelector("." + messageClassToShow).style.display = "block"
+
 
 const circleClassName = "circle"
 
@@ -44,53 +32,53 @@ function moveCircle(touch, circle) {
 
 function clearTimer() {
     document.body.classList.remove("race");
-if (timer) {
-    clearTimeout(timer)
-}
-    
+    if (timer) {
+        clearTimeout(timer)
+    }
+
 }
 
-function startTimer (){
+function startTimer() {
+
     const existingMatchingCircles = document.body.querySelectorAll("." + circleClassName);
-    if (existingMatchingCircles.length >1) {
+    if (existingMatchingCircles.length > 1) {
         document.body.classList.add("race")
-        timer = setTimeout(choosePlayer, 5000); 
+        timer = setTimeout(choosePlayer, 5000);
     }
 }
 
 
-function choosePlayer(){
-    const existingMatchingCircles =[... document.body.querySelectorAll("." + circleClassName)];
+function choosePlayer() {
+    const existingMatchingCircles = [...document.body.querySelectorAll("." + circleClassName)];
     const randomIndex = Math.floor(Math.random() * existingMatchingCircles.length);
     existingMatchingCircles.splice(randomIndex, 1);
+    console.log(existingMatchingCircles)
+
     for (const element of existingMatchingCircles) {
-        element.style.visibility='hidden';
+        element.style.visibility = 'hidden';
     }
-
-
 }
 
 let timer
 
 function displayCircles(touchStartEvent) {
+    hideMessages();
+
     touchStartEvent.preventDefault();
     const touches = touchStartEvent.changedTouches;
 
-    
 
     for (const touch of touches) {
-    
         const circle = document.createElement("div")
         circle.classList.add(circleClassName)
         const className = toClassName(touch.identifier);
         circle.classList.add(className)
         circle.style.width = height + "px";
         circle.style.height = height + "px";
-        circle.style.borderRadius = radius  + "px"
+        circle.style.borderRadius = radius + "px"
         moveCircle(touch, circle);
-
-        document.body.appendChild(circle)
-
+        const ringsContainer = document.querySelector(".rings")
+        ringsContainer.appendChild(circle)
     }
     clearTimer()
     startTimer()
@@ -102,12 +90,12 @@ document.body.addEventListener("touchstart", displayCircles);
 
 function removeCircles(touchRemoveEvent) {
     touchRemoveEvent.preventDefault();
-    console.log(touchRemoveEvent)
     const touches = touchRemoveEvent.changedTouches
 
     for (const touch of touches) {
         const className = toClassName(touch.identifier);
         const existingMatchingCircles = document.body.querySelectorAll("." + className);
+
         for (const element of existingMatchingCircles) {
             element.remove();
         }
@@ -115,7 +103,7 @@ function removeCircles(touchRemoveEvent) {
     clearTimer()
     startTimer()
 
-    
+
 }
 
 document.body.addEventListener("touchmove", moveCircles);
